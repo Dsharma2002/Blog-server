@@ -21,41 +21,6 @@ app.set('view engine', 'ejs')
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
 
-// // mongoose and mongo sandbox routes
-
-// // add a new blog
-// app.get('/add-blog', (req, res) => {
-//     const blog = new Blog({
-//         title: 'new blog',
-//         snippet: 'about my new blog',
-//         body: 'more about my new blog'
-//     })
-
-//     blog.save()
-//         .then((result) => {
-//             res.send(result)
-//         }).catch((err) => console.log(err))
-// })
-
-// // get all the blogs
-// app.get('/all-blogs', (req, res) => {
-//     Blog.find()
-//         .then((result) => {
-//             res.send(result)
-//         }).catch((err) => {
-//             console.log(err)
-//         })
-// })
-
-// // get single blog by specifying id
-// app.get('/single-blog', (req, res) => {
-//     Blog.findById('6242226b6110ca2689a19828')
-//         .then((result) => {
-//             res.send(result)
-//         }).catch((err) => console.log(err))
-// })
-
-
 // routes
 app.get('/', (req, res) => {
     // res.sendFile('./views/index.html', { root: __dirname })
@@ -117,6 +82,5 @@ app.delete('/blogs/:id', (req, res) => {
 
 // 404 use
 app.use((req, res) => {
-    // res.status(404).sendFile('./views/404.html', { root: __dirname })
     res.status(404).render('404', { title: '404' })
 })
